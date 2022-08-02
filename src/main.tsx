@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppThemeProvider } from './shared/contexts';
+import { Sidebar } from './shared/components';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>

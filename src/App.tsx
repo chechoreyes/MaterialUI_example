@@ -1,7 +1,12 @@
 import { AppRoutes } from './routes';
+import { Sidebar } from './shared/components';
 
 export const App = () => {
-    return <AppRoutes />;
+    return (
+        <Sidebar>
+            <AppRoutes />
+        </Sidebar>
+    );
 };
 
 export default App;
