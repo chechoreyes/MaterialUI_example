@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 import { useDrawerContext } from '../contexts/DrawerContext';
 
 interface Props {
-    children: JSX.Element | JSX.Element[] | ReactNode;
+    children?: JSX.Element | JSX.Element[] | ReactNode;
     titulo: string;
     toolBar: ReactNode;
 }

@@ -1,13 +1,12 @@
 import { FC } from 'react';
+import { DetailsBar, ToolsBar } from '../../shared/components';
 import { BasePageLayout } from '../../shared/layouts';
 
 export const Dashboard: FC = () => {
     return (
         <BasePageLayout
             titulo='Página Inicial'
-            toolBar={<>Barra de Herramientas</>}
-        >
-            <p>Holi</p>
-        </BasePageLayout>
+            toolBar={<DetailsBar />}
+        ></BasePageLayout>
     );
 };
