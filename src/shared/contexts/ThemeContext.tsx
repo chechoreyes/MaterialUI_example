@@ -13,8 +13,7 @@ interface IThemeContextData {
     themeName: 'Light' | 'Dark';
     toggleTheme: () => void;
 }
-
-export interface Props {
+interface Props {
     children: JSX.Element | JSX.Element[];
 }
 

@@ -8,6 +8,7 @@ import {
     Box,
     Divider,
     Drawer,
+    Icon,
     List,
     ListItemButton,
     ListItemIcon,
@@ -16,20 +17,53 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import React, { ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDrawerContext } from '../../contexts';
 
 interface Props {
     children: JSX.Element | JSX.Element[] | ReactNode;
 }
+
+interface IListItemLinkProps {
+    to: string;
+    icon: string;
+    label: string;
+    onClick: () => void;
+}
+
+const ListItemLink: FC<IListItemLinkProps> = ({ to, icon, label, onClick }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(to);
+        onClick?.();
+    };
+
+    return (
+        <ListItemButton onClick={handleClick}>
+            <ListItemIcon>
+                <Icon>{icon}</Icon>
+            </ListItemIcon>
+            <ListItemText primary={label} />
+        </ListItemButton>
+    );
+};
 
 export const Sidebar = ({ children }: Props) => {
     const spacing = 28;
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+
     return (
         <>
-            <Drawer open={true} variant={smDown ? 'temporary' : 'permanent'}>
+            <Drawer
+                open={isDrawerOpen}
+                variant={smDown ? 'temporary' : 'permanent'}
+                onClose={toggleDrawerOpen}
+            >
                 <Box
                     width={theme.spacing(spacing)}
                     display='flex'
